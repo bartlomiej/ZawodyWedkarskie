@@ -16,7 +16,7 @@ namespace ZawodyWedkarskie.API.Data
         }
         public async Task<bool> Exist(string login)
         {
-            if(await _context.Uzytkownicy.AnyAsync(x => x.Login == login))
+            if (await _context.Uzytkownicy.AnyAsync(x => x.Login == login))
                 return true;
             return false;
         }
@@ -34,21 +34,6 @@ namespace ZawodyWedkarskie.API.Data
             return user;
         }
 
-        private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
-        {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
-            {
-                var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-
-                for(int i = 0; i < computedHash.Length; i++)
-                {
-                    if (computedHash[i] != passwordHash[i])
-                        return false;
-                }
-            }
-            return true;
-        }
-
         public async Task<Uzytkownik> Register(Uzytkownik user, string password)
         {
             byte[] passwordHash, passwordSalt;
@@ -57,6 +42,11 @@ namespace ZawodyWedkarskie.API.Data
 
             user.HasloHash = passwordHash;
             user.HasloSalt = passwordSalt;
+
+            user.UzytkownikUtworzyl = user.Nazwisko + " " + user.Imie;
+            user.UzytkownikModyfikowal = user.Nazwisko + " " + user.Imie;
+            user.DataUtworzenia = DateTime.Now;
+            user.DataModyfikacji = DateTime.Now;
 
             await _context.Uzytkownicy.AddAsync(user);
             await _context.SaveChangesAsync();
@@ -70,6 +60,21 @@ namespace ZawodyWedkarskie.API.Data
                 passwordSalt = hmac.Key;
                 passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
             }
+        }
+
+        private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+        {
+            using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
+            {
+                var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+                for (int i = 0; i < computedHash.Length; i++)
+                {
+                    if (computedHash[i] != passwordHash[i])
+                        return false;
+                }
+            }
+            return true;
         }
     }
 }
