@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZawodyWedkarskie.API.Data;
 
 namespace ZawodyWedkarskie.API.Migrations
 {
     [DbContext(typeof(ZawodyWedkarskieContext))]
-    partial class ZawodyWedkarskieContextModelSnapshot : ModelSnapshot
+    [Migration("20200314073908_AddedUsers")]
+    partial class AddedUsers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,10 +48,10 @@ namespace ZawodyWedkarskie.API.Migrations
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("DataModyfikacji")
-                        .HasColumnType("DATETIME");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DataUtworzenia")
-                        .HasColumnType("DATETIME");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .HasColumnType("NVARCHAR(50)");

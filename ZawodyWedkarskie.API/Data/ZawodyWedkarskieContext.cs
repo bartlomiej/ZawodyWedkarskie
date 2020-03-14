@@ -5,8 +5,9 @@ namespace ZawodyWedkarskie.API.Data
 {
     public class ZawodyWedkarskieContext : DbContext
     {
-        public ZawodyWedkarskieContext(DbContextOptions<ZawodyWedkarskieContext> options) : base(options) {}
+        public ZawodyWedkarskieContext(DbContextOptions<ZawodyWedkarskieContext> options) : base(options) { }
 
-        public DbSet<KoloWedkarskie> KolaWedkarskie { get; set; } 
+        public DbSet<KoloWedkarskie> KolaWedkarskie { get; set; }
+        public DbSet<Uzytkownik> Uzytkownicy { get; set; }
     }
 }

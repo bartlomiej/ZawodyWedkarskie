@@ -29,6 +29,16 @@ namespace ZawodyWedkarskie.API
         {
             services.AddDbContext<ZawodyWedkarskieContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            services.AddCors(options =>
+                {
+                    options.AddPolicy("Cors",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+                    });
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,13 +48,10 @@ namespace ZawodyWedkarskie.API
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors("Cors");
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
