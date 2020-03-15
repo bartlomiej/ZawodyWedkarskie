@@ -12,7 +12,8 @@ namespace ZawodyWedkarskie.API.Models
         [Column(TypeName = "NVARCHAR(30)")]
         public string Nazwa { get; set; }
         [Required]
-        public decimal SredniaCenas { get; set; }
+        [Column(TypeName = "MONEY")]
+        public decimal SredniaCena { get; set; }
         [Required]
         [Column(TypeName = "NVARCHAR(70)")]
         public string UzytkownikUtworzyl { get; set; }
