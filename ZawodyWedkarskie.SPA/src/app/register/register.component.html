@@ -1,5 +1,5 @@
-<form #registerForm="ngForm" (ngSubmit)="register()">
-  <h2 class="text-center text-primary">Zapisz się</h2>
+<form #registerForm="ngForm">
+  <h2 class="text-center text-primary">Rejestracja</h2>
   <hr>
   <div class="form-group">
     <input class="form-control mr-sm-2" type="text" placeholder="Login" [(ngModel)]="model.Login" name="Login" required>
@@ -7,9 +7,21 @@
   <div class="form-group">
     <input class="form-control mr-sm-2" type="password" placeholder="Hasło" [(ngModel)]="model.Haslo" name="Haslo" required>
   </div>
+  <div class="form-group">
+    <input class="form-control mr-sm-2" type="text" placeholder="Nazwisko" [(ngModel)]="model.Nazwisko" name="Nazwisko" required>
+  </div>
+  <div class="form-group">
+    <input class="form-control mr-sm-2" type="text" placeholder="Imię" [(ngModel)]="model.Imie" name="Imie" required>
+  </div>
+  <div class="form-group">
+    <input class="form-control mr-sm-2" type="text" placeholder="Nr karty wędkarskiej" [(ngModel)]="model.NrKartyWedkarskiej" name="NrKartyWedkarskiej" required>
+  </div>
+  <div class="form-group">
+    <input class="form-control mr-sm-2" type="text" placeholder="Email" [(ngModel)]="model.Email" name="Email" required>
+  </div>
   <div class="form-group text-center">
-    <button class="btn btn-success" type="submit" (click)="register()">Rejestracja</button>
-    <button class="btn btn-default" type="submit" (click)="cancel()" >Anuluj</button>
+    <button class="btn btn-success btn-lg mr-3" type="submit" (click)="rejestruj()">Rejestracja</button>
+    <button class="btn btn-info" type="submit" (click)="przerwij()">Anuluj</button>
   </div>
 </form>
 

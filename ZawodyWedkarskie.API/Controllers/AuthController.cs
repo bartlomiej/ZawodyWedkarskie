@@ -59,7 +59,7 @@ namespace ZawodyWedkarskie.API.Controllers
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, user.IdUzytkownika.ToString()),
-                new Claim(ClaimTypes.Name, user.Nazwisko)
+                new Claim(ClaimTypes.Name, user.Imie)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));
