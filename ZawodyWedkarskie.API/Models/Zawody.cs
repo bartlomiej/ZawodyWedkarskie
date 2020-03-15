@@ -30,14 +30,15 @@ namespace ZawodyWedkarskie.API.Models
         public int IdRodzajuZawodow { get; set; }
         [ForeignKey(nameof(IdRodzajuZawodow))]
         public SlownikRodzajZawodow RodzajZawodow  { get; set; } 
-        public int IdGrandPrix { get; set; }
+        public int? IdGrandPrix { get; set; }
         [ForeignKey(nameof(IdGrandPrix))]
         public GrandPrix GrandPrix { get; set; }
         public int IdKolaOrganizatora { get; set; }
         [ForeignKey(nameof(IdKolaOrganizatora))]
-        public Kolo KoloOrganizator { get; set; }
+        public Kolo Organizator { get; set; }
         [Required]
         public bool TylkoDlaCzlonkowKola { get; set; }
+        [Required]
         public int IdLowiska { get; set; }
         [ForeignKey(nameof(IdLowiska))]
         public SlownikLowisko Lowisko { get; set; }
@@ -45,7 +46,7 @@ namespace ZawodyWedkarskie.API.Models
         public bool Zakonczone { get; set; }
         public string UwagiLowisko { get; set; }
         public string Protesty { get; set; }
-        public int PunktyZaWymiar { get; set; }
+        public int? PunktyZaWymiar { get; set; }
         [Required]
         [Column(TypeName = "NVARCHAR(70)")]
         public string UzytkownikUtworzyl { get; set; }
