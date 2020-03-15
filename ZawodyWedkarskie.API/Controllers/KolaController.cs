@@ -14,11 +14,11 @@ namespace ZawodyWedkarskie.API.Controllers
     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
-    public class KolaWedkarskieController : ControllerBase
+    public class KolaController : ControllerBase
     {
         private readonly ZawodyWedkarskieContext _context;
 
-        public KolaWedkarskieController(ZawodyWedkarskieContext context)
+        public KolaController(ZawodyWedkarskieContext context)
         {
             _context = context;
         }
@@ -27,19 +27,19 @@ namespace ZawodyWedkarskie.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Values()
         {
-            var kola = await _context.KolaWedkarskie.ToListAsync();
+            var kola = await _context.Kola.ToListAsync();
             return Ok(kola);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Value(int id)
         {
-            var kola = await _context.KolaWedkarskie.FirstOrDefaultAsync(x => x.Id == id);
+            var kola = await _context.Kola.FirstOrDefaultAsync(x => x.IdKola == id);
             return Ok(kola);
         }
 
         [HttpPost]
-        public async Task<IActionResult> SaveNewValue([FromBody]KoloWedkarskie value)
+        public async Task<IActionResult> SaveNewValue([FromBody]Kolo value)
         {
             _context.Add(value);
             await _context.SaveChangesAsync();
@@ -47,11 +47,11 @@ namespace ZawodyWedkarskie.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateValue(int id, [FromBody]KoloWedkarskie value)
+        public async Task<IActionResult> UpdateValue(int id, [FromBody]Kolo value)
         {
-            var data = await _context.KolaWedkarskie.FindAsync(id);
+            var data = await _context.Kola.FindAsync(id);
             data.Nazwa = value.Nazwa;
-            _context.KolaWedkarskie.Update(data);
+            _context.Kola.Update(data);
             await _context.SaveChangesAsync();
             return Ok(data);
         }
@@ -59,11 +59,11 @@ namespace ZawodyWedkarskie.API.Controllers
         [HttpDelete]
         public async Task<IActionResult> RemoveValue(int id)
         {
-            var data = await _context.KolaWedkarskie.FindAsync(id);
+            var data = await _context.Kola.FindAsync(id);
             if (data == null)
                 return NoContent();
 
-            _context.KolaWedkarskie.Remove(data);
+            _context.Kola.Remove(data);
             return Ok(data);
         }
     }

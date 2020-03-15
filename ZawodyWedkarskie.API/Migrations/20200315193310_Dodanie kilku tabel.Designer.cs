@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZawodyWedkarskie.API.Data;
 
 namespace ZawodyWedkarskie.API.Migrations
 {
     [DbContext(typeof(ZawodyWedkarskieContext))]
-    partial class ZawodyWedkarskieContextModelSnapshot : ModelSnapshot
+    [Migration("20200315193310_Dodanie kilku tabel")]
+    partial class Dodaniekilkutabel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -177,10 +179,10 @@ namespace ZawodyWedkarskie.API.Migrations
                     b.Property<DateTime>("DataUtworzenia")
                         .HasColumnType("DATETIME");
 
-                    b.Property<int?>("IdKola")
+                    b.Property<int>("IdKola")
                         .HasColumnType("int");
 
-                    b.Property<int?>("IdStanowiska")
+                    b.Property<int>("IdStanowiska")
                         .HasColumnType("int");
 
                     b.Property<string>("Imie")
@@ -221,11 +223,15 @@ namespace ZawodyWedkarskie.API.Migrations
                 {
                     b.HasOne("ZawodyWedkarskie.API.Models.Kolo", "Kolo")
                         .WithMany()
-                        .HasForeignKey("IdKola");
+                        .HasForeignKey("IdKola")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ZawodyWedkarskie.API.Models.Stanowisko", "Stanowisko")
                         .WithMany()
-                        .HasForeignKey("IdStanowiska");
+                        .HasForeignKey("IdStanowiska")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

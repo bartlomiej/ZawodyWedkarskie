@@ -10,8 +10,8 @@ using ZawodyWedkarskie.API.Data;
 namespace ZawodyWedkarskie.API.Migrations
 {
     [DbContext(typeof(ZawodyWedkarskieContext))]
-    [Migration("20200314074141_Zmiana formatu daty")]
-    partial class Zmianaformatudaty
+    [Migration("20200315193037_Tworzenie bazy")]
+    partial class Tworzeniebazy
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,20 +21,33 @@ namespace ZawodyWedkarskie.API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ZawodyWedkarskie.API.Models.KoloWedkarskie", b =>
+            modelBuilder.Entity("ZawodyWedkarskie.API.Models.Kolo", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("IdKola")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("DataModyfikacji")
+                        .HasColumnType("DATETIME");
+
+                    b.Property<DateTime>("DataUtworzenia")
+                        .HasColumnType("DATETIME");
+
                     b.Property<string>("Nazwa")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("NVARCHAR(200)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("UzytkownikModyfikowal")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(70)");
 
-                    b.ToTable("KolaWedkarskie");
+                    b.Property<string>("UzytkownikUtworzyl")
+                        .HasColumnType("NVARCHAR(70)");
+
+                    b.HasKey("IdKola");
+
+                    b.ToTable("Kola");
                 });
 
             modelBuilder.Entity("ZawodyWedkarskie.API.Models.Uzytkownik", b =>
@@ -56,7 +69,12 @@ namespace ZawodyWedkarskie.API.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("NVARCHAR(50)");
 
-                    b.Property<byte[]>("Haslo")
+                    b.Property<byte[]>("HasloHash")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("HasloSalt")
+                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Imie")
@@ -64,14 +82,15 @@ namespace ZawodyWedkarskie.API.Migrations
                         .HasColumnType("NVARCHAR(30)");
 
                     b.Property<string>("Login")
+                        .IsRequired()
                         .HasColumnType("NVARCHAR(70)");
 
                     b.Property<string>("Nazwisko")
                         .IsRequired()
                         .HasColumnType("NVARCHAR(40)");
 
-                    b.Property<byte[]>("Sol")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("NrKartyWedkarskiej")
+                        .HasColumnType("NVARCHAR(30)");
 
                     b.Property<string>("UzytkownikModyfikowal")
                         .IsRequired()

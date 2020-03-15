@@ -7,7 +7,10 @@ namespace ZawodyWedkarskie.API.Data
     {
         public ZawodyWedkarskieContext(DbContextOptions<ZawodyWedkarskieContext> options) : base(options) { }
 
-        public DbSet<KoloWedkarskie> KolaWedkarskie { get; set; }
+        public DbSet<Kolo> Kola { get; set; }
         public DbSet<Uzytkownik> Uzytkownicy { get; set; }
+        public DbSet<GrandPrix> GrandPrixy { get; set; }
+        public DbSet<Stanowisko> Stanowiska { get; set; }
+        public DbSet<Wedkarz> Wedkarze { get; set; }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZawodyWedkarskie.API.Data;
 
 namespace ZawodyWedkarskie.API.Migrations
 {
     [DbContext(typeof(ZawodyWedkarskieContext))]
-    partial class ZawodyWedkarskieContextModelSnapshot : ModelSnapshot
+    [Migration("20200315193729_Poprawa w tabeli wedkarze")]
+    partial class Poprawawtabeliwedkarze
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
