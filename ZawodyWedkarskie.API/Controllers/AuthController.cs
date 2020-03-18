@@ -58,7 +58,7 @@ namespace ZawodyWedkarskie.API.Controllers
 
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, user.IdUzytkownika.ToString()),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Imie)
             };
 

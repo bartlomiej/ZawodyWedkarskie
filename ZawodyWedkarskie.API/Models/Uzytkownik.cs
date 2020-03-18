@@ -1,13 +1,11 @@
-using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ZawodyWedkarskie.API.Models
 {
-    public class Uzytkownik
+    public class Uzytkownik : ModelBase
     {
-        [Key]
-        public int IdUzytkownika { get; set; }
         [Required]
         [Column(TypeName = "NVARCHAR(40)")]
         public string Nazwisko { get; set; }
@@ -27,17 +25,7 @@ namespace ZawodyWedkarskie.API.Models
         public string Email { get; set; }
         [Required]
         public bool Aktywny { get; set; }
-        [Required]
-        [Column(TypeName = "NVARCHAR(70)")]
-        public string UzytkownikUtworzyl { get; set; }
-        [Required]
-        [Column(TypeName = "NVARCHAR(70)")]
-        public string UzytkownikModyfikowal { get; set; }
-        [Required]
-        [Column(TypeName = "DATETIME")]
-        public DateTime DataUtworzenia { get; set; }
-        [Required]
-        [Column(TypeName = "DATETIME")]
-        public DateTime DataModyfikacji { get; set; }
+        public ICollection<UzytkownikUprawnienie> Uprawnienia { get; set; }
+        public ICollection<Zdjecie> Zdjecia { get; set; }
     }
 }

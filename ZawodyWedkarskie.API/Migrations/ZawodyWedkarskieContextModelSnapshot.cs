@@ -21,7 +21,7 @@ namespace ZawodyWedkarskie.API.Migrations
 
             modelBuilder.Entity("ZawodyWedkarskie.API.Models.GrandPrix", b =>
                 {
-                    b.Property<int>("IdGrandPrix")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -41,16 +41,17 @@ namespace ZawodyWedkarskie.API.Migrations
                         .HasColumnType("NVARCHAR(70)");
 
                     b.Property<string>("UzytkownikUtworzyl")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(70)");
 
-                    b.HasKey("IdGrandPrix");
+                    b.HasKey("Id");
 
                     b.ToTable("GrandPrixy");
                 });
 
             modelBuilder.Entity("ZawodyWedkarskie.API.Models.Kolo", b =>
                 {
-                    b.Property<int>("IdKola")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -70,16 +71,17 @@ namespace ZawodyWedkarskie.API.Migrations
                         .HasColumnType("NVARCHAR(70)");
 
                     b.Property<string>("UzytkownikUtworzyl")
+                        .IsRequired()
                         .HasColumnType("NVARCHAR(70)");
 
-                    b.HasKey("IdKola");
+                    b.HasKey("Id");
 
                     b.ToTable("Kola");
                 });
 
             modelBuilder.Entity("ZawodyWedkarskie.API.Models.SlownikGatunekRyby", b =>
                 {
-                    b.Property<int>("IdGatunku")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -117,14 +119,14 @@ namespace ZawodyWedkarskie.API.Migrations
                     b.Property<int>("WymiarOchronny")
                         .HasColumnType("int");
 
-                    b.HasKey("IdGatunku");
+                    b.HasKey("Id");
 
                     b.ToTable("SlownikGatunkiRyb");
                 });
 
             modelBuilder.Entity("ZawodyWedkarskie.API.Models.SlownikLowisko", b =>
                 {
-                    b.Property<int>("IdLowiska")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -147,14 +149,14 @@ namespace ZawodyWedkarskie.API.Migrations
                         .IsRequired()
                         .HasColumnType("NVARCHAR(70)");
 
-                    b.HasKey("IdLowiska");
+                    b.HasKey("Id");
 
                     b.ToTable("SlownikLowiska");
                 });
 
             modelBuilder.Entity("ZawodyWedkarskie.API.Models.SlownikNagroda", b =>
                 {
-                    b.Property<int>("IdNagrody")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -180,14 +182,14 @@ namespace ZawodyWedkarskie.API.Migrations
                         .IsRequired()
                         .HasColumnType("NVARCHAR(70)");
 
-                    b.HasKey("IdNagrody");
+                    b.HasKey("Id");
 
                     b.ToTable("SlownikNagrody");
                 });
 
             modelBuilder.Entity("ZawodyWedkarskie.API.Models.SlownikRodzajZawodow", b =>
                 {
-                    b.Property<int>("IdRodzaju")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -214,14 +216,14 @@ namespace ZawodyWedkarskie.API.Migrations
                         .IsRequired()
                         .HasColumnType("NVARCHAR(70)");
 
-                    b.HasKey("IdRodzaju");
+                    b.HasKey("Id");
 
                     b.ToTable("SlownikRodzajeZawodow");
                 });
 
             modelBuilder.Entity("ZawodyWedkarskie.API.Models.SlownikStanowisko", b =>
                 {
-                    b.Property<int>("IdGrandPrix")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -241,16 +243,17 @@ namespace ZawodyWedkarskie.API.Migrations
                         .HasColumnType("NVARCHAR(70)");
 
                     b.Property<string>("UzytkownikUtworzyl")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(70)");
 
-                    b.HasKey("IdGrandPrix");
+                    b.HasKey("Id");
 
                     b.ToTable("SlownikStanowiska");
                 });
 
             modelBuilder.Entity("ZawodyWedkarskie.API.Models.Uzytkownik", b =>
                 {
-                    b.Property<int>("IdUzytkownika")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -298,14 +301,14 @@ namespace ZawodyWedkarskie.API.Migrations
                         .IsRequired()
                         .HasColumnType("NVARCHAR(70)");
 
-                    b.HasKey("IdUzytkownika");
+                    b.HasKey("Id");
 
                     b.ToTable("Uzytkownicy");
                 });
 
             modelBuilder.Entity("ZawodyWedkarskie.API.Models.UzytkownikUprawnienie", b =>
                 {
-                    b.Property<int>("IdUprawnienia")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -316,9 +319,6 @@ namespace ZawodyWedkarskie.API.Migrations
                     b.Property<DateTime>("DataUtworzenia")
                         .HasColumnType("DATETIME");
 
-                    b.Property<int>("IdUzytkownika")
-                        .HasColumnType("int");
-
                     b.Property<string>("Klucz")
                         .IsRequired()
                         .HasColumnType("NVARCHAR(6)");
@@ -326,6 +326,9 @@ namespace ZawodyWedkarskie.API.Migrations
                     b.Property<string>("Uprawnienie")
                         .IsRequired()
                         .HasColumnType("NVARCHAR(1)");
+
+                    b.Property<int>("UzytkownikId")
+                        .HasColumnType("int");
 
                     b.Property<string>("UzytkownikModyfikowal")
                         .IsRequired()
@@ -335,16 +338,16 @@ namespace ZawodyWedkarskie.API.Migrations
                         .IsRequired()
                         .HasColumnType("NVARCHAR(70)");
 
-                    b.HasKey("IdUprawnienia");
+                    b.HasKey("Id");
 
-                    b.HasIndex("IdUzytkownika");
+                    b.HasIndex("UzytkownikId");
 
                     b.ToTable("UzytkownikyUprawnienia");
                 });
 
             modelBuilder.Entity("ZawodyWedkarskie.API.Models.Wedkarz", b =>
                 {
-                    b.Property<int>("IdWedkarza")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -358,12 +361,6 @@ namespace ZawodyWedkarskie.API.Migrations
                     b.Property<DateTime>("DataUtworzenia")
                         .HasColumnType("DATETIME");
 
-                    b.Property<int?>("IdKola")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("IdStanowiska")
-                        .HasColumnType("int");
-
                     b.Property<string>("Imie")
                         .IsRequired()
                         .HasColumnType("NVARCHAR(30)");
@@ -371,12 +368,18 @@ namespace ZawodyWedkarskie.API.Migrations
                     b.Property<string>("ImieDrugie")
                         .HasColumnType("NVARCHAR(30)");
 
+                    b.Property<int?>("KoloId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nazwisko")
                         .IsRequired()
                         .HasColumnType("NVARCHAR(40)");
 
                     b.Property<string>("NrKartyWedkarskiej")
                         .HasColumnType("NVARCHAR(20)");
+
+                    b.Property<int?>("StanowiskoId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("UprawnieniaSedziego")
                         .HasColumnType("bit");
@@ -389,18 +392,18 @@ namespace ZawodyWedkarskie.API.Migrations
                         .IsRequired()
                         .HasColumnType("NVARCHAR(70)");
 
-                    b.HasKey("IdWedkarza");
+                    b.HasKey("Id");
 
-                    b.HasIndex("IdKola");
+                    b.HasIndex("KoloId");
 
-                    b.HasIndex("IdStanowiska");
+                    b.HasIndex("StanowiskoId");
 
                     b.ToTable("Wedkarze");
                 });
 
             modelBuilder.Entity("ZawodyWedkarskie.API.Models.Zawody", b =>
                 {
-                    b.Property<int>("IdZawodow")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -426,33 +429,9 @@ namespace ZawodyWedkarskie.API.Migrations
                     b.Property<DateTime>("DataZbiorki")
                         .HasColumnType("DATETIME");
 
-                    b.Property<int>("IdGrandPrix")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdKolaOrganizatora")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdLowiska")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdRodzajuZawodow")
-                        .HasColumnType("int");
-
                     b.Property<string>("Nazwa")
                         .IsRequired()
                         .HasColumnType("NVARCHAR(200)");
-
-                    b.Property<string>("Protesty")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PunktyZaWymiar")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("TylkoDlaCzlonkowKola")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UwagiLowisko")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UzytkownikModyfikowal")
                         .IsRequired()
@@ -462,27 +441,63 @@ namespace ZawodyWedkarskie.API.Migrations
                         .IsRequired()
                         .HasColumnType("NVARCHAR(70)");
 
-                    b.Property<bool>("Zakonczone")
-                        .HasColumnType("bit");
-
-                    b.HasKey("IdZawodow");
-
-                    b.HasIndex("IdGrandPrix");
-
-                    b.HasIndex("IdKolaOrganizatora");
-
-                    b.HasIndex("IdLowiska");
-
-                    b.HasIndex("IdRodzajuZawodow");
+                    b.HasKey("Id");
 
                     b.ToTable("Zawody");
+                });
+
+            modelBuilder.Entity("ZawodyWedkarskie.API.Models.Zdjecie", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DataModyfikacji")
+                        .HasColumnType("DATETIME");
+
+                    b.Property<DateTime>("DataUtworzenia")
+                        .HasColumnType("DATETIME");
+
+                    b.Property<bool>("Glowne")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Opis")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(200)");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(255)");
+
+                    b.Property<int>("UzytkownikId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UzytkownikModyfikowal")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(70)");
+
+                    b.Property<string>("UzytkownikUtworzyl")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(70)");
+
+                    b.Property<int>("WedkarzId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UzytkownikId");
+
+                    b.HasIndex("WedkarzId");
+
+                    b.ToTable("Zdjecia");
                 });
 
             modelBuilder.Entity("ZawodyWedkarskie.API.Models.UzytkownikUprawnienie", b =>
                 {
                     b.HasOne("ZawodyWedkarskie.API.Models.Uzytkownik", "Uzytkownik")
-                        .WithMany()
-                        .HasForeignKey("IdUzytkownika")
+                        .WithMany("Uprawnienia")
+                        .HasForeignKey("UzytkownikId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -491,36 +506,24 @@ namespace ZawodyWedkarskie.API.Migrations
                 {
                     b.HasOne("ZawodyWedkarskie.API.Models.Kolo", "Kolo")
                         .WithMany()
-                        .HasForeignKey("IdKola");
+                        .HasForeignKey("KoloId");
 
                     b.HasOne("ZawodyWedkarskie.API.Models.SlownikStanowisko", "Stanowisko")
                         .WithMany()
-                        .HasForeignKey("IdStanowiska");
+                        .HasForeignKey("StanowiskoId");
                 });
 
-            modelBuilder.Entity("ZawodyWedkarskie.API.Models.Zawody", b =>
+            modelBuilder.Entity("ZawodyWedkarskie.API.Models.Zdjecie", b =>
                 {
-                    b.HasOne("ZawodyWedkarskie.API.Models.GrandPrix", "GrandPrix")
-                        .WithMany()
-                        .HasForeignKey("IdGrandPrix")
+                    b.HasOne("ZawodyWedkarskie.API.Models.Uzytkownik", "Uzytkownik")
+                        .WithMany("Zdjecia")
+                        .HasForeignKey("UzytkownikId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ZawodyWedkarskie.API.Models.Kolo", "KoloOrganizator")
-                        .WithMany()
-                        .HasForeignKey("IdKolaOrganizatora")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ZawodyWedkarskie.API.Models.SlownikLowisko", "Lowisko")
-                        .WithMany()
-                        .HasForeignKey("IdLowiska")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ZawodyWedkarskie.API.Models.SlownikRodzajZawodow", "RodzajZawodow")
-                        .WithMany()
-                        .HasForeignKey("IdRodzajuZawodow")
+                    b.HasOne("ZawodyWedkarskie.API.Models.Wedkarz", "Wedkarz")
+                        .WithMany("Zdjecia")
+                        .HasForeignKey("WedkarzId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

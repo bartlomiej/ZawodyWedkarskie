@@ -18,5 +18,6 @@ namespace ZawodyWedkarskie.API.Data
         public DbSet<UzytkownikUprawnienie> UzytkownikyUprawnienia { get; set; }
         public DbSet<Wedkarz> Wedkarze { get; set; }
         public DbSet<Zawody> Zawody { get; set; }
+        public DbSet<Zdjecie> Zdjecia { get; set; }
     }
 }

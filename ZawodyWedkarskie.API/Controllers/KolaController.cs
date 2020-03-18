@@ -34,7 +34,7 @@ namespace ZawodyWedkarskie.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Value(int id)
         {
-            var kola = await _context.Kola.FirstOrDefaultAsync(x => x.IdKola == id);
+            var kola = await _context.Kola.FirstOrDefaultAsync(x => x.Id == id);
             return Ok(kola);
         }
 
