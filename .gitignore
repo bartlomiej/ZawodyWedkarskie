@@ -4,5 +4,5 @@ bin
 obj
 *.db
 wwwroot
-node_modules
+**node_modules
 Migrations
